@@ -41,5 +41,6 @@ def collect_resources(yaml_dir='locales'):
     return roots
 
 
-def transform(roots, storage_driver):
+def bind(keys,  storage_driver_instance):
+    """Takes array where each element correspond to one dict with lang, sections and value keys. One storage driver take this parameters and save it as entry that could be queried."""
     pass
