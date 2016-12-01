@@ -41,6 +41,39 @@ def collect_resources(yaml_dir='locales'):
     return roots
 
 
+def get_all_kv(yaml_file_loaders):
+    """Inspect the instance and collect all kv that encounters"""
+    return {}
+
+def flat_hashes(kv):
+    """FLat hashes to at 1 level of nested"""
+    return kv
+
+def normalize_keys(kv, parent=None):
+    """Build a hash where each key part is seperated by one dot.
+    If parent is provided change slashes by dots.
+    """
+    return kv
+
+def build_keys(path):
+    keys = {}
+    resources = collect_resources(path)
+
+    for path, files in yaml.items():
+        for f in files:
+            parent = "{}.{}".format(path, os.path.filename(f))
+            stream = open(f, 'r')
+            sf = load(stream)
+            maps = flat_hashes(get_all_kv(sf))
+
+            maps_normalized = normalize_keys(maps, parent=parent)
+
+            keys += maps_normalized
+
+    return keys
+
+
+
 def bind(keys,  storage_driver_instance):
     """Takes array where each element correspond to one dict with lang, sections and value keys. One storage driver take this parameters and save it as entry that could be queried."""
     pass

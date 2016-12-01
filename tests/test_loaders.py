@@ -26,5 +26,16 @@ class TestFileCollector(unittest.TestCase):
         self.assertEqual(len(l.collect_resources('examples').values()), 1)
 
 
+class TestKeyBuilder(unittest.TestCase):
+    @unittest.skip("Need flat_hases, normalize_keys and get_all_kv implementation")
+    def test_if_given_a_path_build_correct_keys(self):
+        self.assertEqual(l.build_keys('examples'), {'basic.msg': "Hola mundo"})
+
+
+class TestBinder(unittest.TestCase):
+    @unittest.skip("requires storage and key builder")
+    def test_if_key_and_storage_share_same_value():
+        pass
+
 if __name__ == '__main__':
     unittest.main()
